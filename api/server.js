@@ -17,7 +17,7 @@ server.get('*', (req, res) => {
 })
 
 server.use((error, req, res, next) => { // eslint-disable-line
-    res.status(500).json({message: error.message})
+    res.status(error.status || 500).json({message: error.message})
 })
 
 module.exports = server;
