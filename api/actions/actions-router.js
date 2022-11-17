@@ -6,7 +6,7 @@ const {
     validateActionInfo
 } = require('./actions-middleware');
 
-const router = express();
+const router = express.Router();
 
 router.get('/', (req, res, next) => {
     Actions.get()

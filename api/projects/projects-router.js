@@ -6,7 +6,7 @@ const {
     validateProjectInfo
 } = require('./projects-middleware');
 
-const router = express();
+const router = express.Router();
 
 router.get('/', (req, res, next) => {
     Projects.get()
