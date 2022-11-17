@@ -33,4 +33,22 @@ router.post('/', validateActionInfo, async (req, res, next) => {
     }
 })
 
+router.put('/:id', validateId, validateActionInfo, async (req, res, next) => {
+    try {
+        const updatedAction = await Actions.update(req.params.id, req.body);
+        res.status(200).json(updatedAction);
+    } catch(err) {
+        next(err);
+    }
+})
+
+router.delete('/:id', validateId, async (req, res, next) => {
+    try {
+        await Actions.remove(req.params.id);
+        res.status(200).json({message: 'item deleted'});
+    } catch(err) {
+        next(err);
+    }
+})
+
 module.exports = router;
