@@ -42,4 +42,14 @@ router.put('/:id', validateId, validateProjectInfo, async (req, res, next) => {
     }
 })
 
+router.delete('/:id', validateId, async (req, res, next) => {
+    try {
+        // const deletedProject = await Projects.get(id);
+        await Projects.remove(req.params.id);
+        res.status(200).json({message: 'item deleted'});
+    } catch(err) {
+        next(err);
+    }
+})
+
 module.exports = router;
